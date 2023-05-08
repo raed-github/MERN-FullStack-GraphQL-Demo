@@ -2,16 +2,19 @@
   "name": "server",
   "version": "1.0.0",
   "description": "MERN Stack GraphQL demo mini app",
-  "main": "index.js",
+  "start": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Raed",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-graphql": "^0.12.0",
     "graphql": "^16.6.0",
+    "lodash": "^4.17.21",
+    "mongoose": "^7.1.0",
     "nodemon": "^2.0.22"
   }
 }

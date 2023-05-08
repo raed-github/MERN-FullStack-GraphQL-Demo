@@ -1,9 +1,24 @@
+require('dotenv').config()
 const express = require('express')
-const graphqlHTTP = require('express-graphql')
+const {graphqlHTTP} = require('express-graphql');
+const schema = require('./schema/schema');
+const mongoose = require('mongoose')
 
 const app = express();
 
+const port = process.env.PORT
+const mongoURI = process.env.MONGO_URI
 
-app.listen(4000,()=>{
-    console.log('app is listening on port 4000')
-})
+app.use('/graphql', graphqlHTTP({
+    schema,
+    graphiql: true
+}))
+
+mongoose.connect(mongoURI)
+    .then(()=>{
+        app.listen(port,()=>{
+            console.log(`app is connected to db and running on port ${port}`)
+        })
+    }).catch((error)=>{
+        console.log(error)
+    })
