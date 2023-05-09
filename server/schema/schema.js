@@ -118,6 +118,7 @@ const Mutation = new GraphQLObjectType({
                 instructorId: {type: new GraphQLNonNull(GraphQLID)}
             },
             resolve(parent,args){
+                console.log(args)
                 let course = new Course({
                     name: args.name,
                     subject: args.subject,
